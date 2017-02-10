@@ -9,24 +9,22 @@
 #define SYMB 1 // symbols
 #define GAME 2 // Gaming layer with arrow keys
 
-// Tap dance keys
-#define TAPPING_TERM 300
-
 // Tap Dance Declarations
 // https://github.com/qmk/qmk_firmware/wiki#tap-dance-a-single-key-can-do-3-5-or-100-different-things
 
 enum {
   TD_BUILD_TEST = 0
 };
-
 // Tap Dance Definitions
-
 qk_tap_dance_action_t tap_dance_actions[] = {
-  //
+
   // Tap once in Xcode to Build, twice to Test (⌘ + B -> ⌘ + U)
   [TD_BUILD_TEST] = ACTION_TAP_DANCE_DOUBLE(LGUI(KC_B), LGUI(KC_U))
 
 };
+
+
+// Main Keymaps
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer.
@@ -50,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |LCtrl |  ⛔️  | ⌥ +⌘ |  ⌥   |  ⌘   |                                       |  ⛔️  |  ⛔️  |  ⛔️  |  ⛔️  | Wake |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |  ⛔️  |  F7  |       | PLAY | NEXT |
+ *                                        | ⌘ +, |  F7  |       | PLAY | NEXT |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      |  ⛔️  |       |  ⛔️  |        |      |
  *                                 |  ⌫   |  ⌘   |------|       |------|   ⏎    |  ⎵   |
@@ -68,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         CTL_T(KC_TAB), KC_A,   KC_S,          KC_D,    KC_F,     KC_G,
         KC_LSPO,       KC_Z,   KC_X,          KC_C,    KC_V,     KC_B,      KC_GRAVE,
         KC_LCTL,       KC_NO,  LALT(KC_LGUI), KC_LALT, KC_SYSTEM_WAKE,
-                                                                      KC_NO, KC_F7,
+                                                                    LGUI(KC_COMMA), KC_F7,
                                                                              KC_NO,
                                                       KC_BSPACE, KC_LGUI, MO(SYMB),
         
@@ -102,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |  TG2 |  ⛔️  |       |  ⛔️  |  ⛔️  |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |  ⛔️  |       |  ⛔️  |      |      |
- *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |------|       |------|  ⌘   |      |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -127,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_NO,   KC_NO,    KC_NO,    KC_NO,       KC_NO,
        KC_NO,   KC_NO,
        KC_NO,   
-       KC_TRNS,KC_TRNS,KC_TRNS
+       KC_TRNS,KC_LGUI,KC_TRNS
        
 ),
 

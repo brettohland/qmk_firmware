@@ -1,8 +1,7 @@
-# The OSX Friendly Version of the Default Firmware
+# Ampersand Softworks Custom Ergodox Layout
 
-So, I took the default firmware and just made a couple of tweaks that make it easier to use with OS X:
+Custom keyboard for developing Cocoa apps. 
 
-1. The Cmd key is now on the right side, making Cmd+Space easier.
-2. The media keys work on OSX (But not on Windows).
-
-![default osx](default_osx_highres.png)
+- Includes Vim movement keys.
+- Includes Space Cadet Shift keys.
+- Includes Tapdance Key that sends the key shortcuts for `Build` and `Test` in Xcode.
