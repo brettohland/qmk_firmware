@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESCAPE,     KC_1,   KC_2,          KC_3,    KC_4,     KC_5,      TG(SYMB),
         KC_TAB,        KC_Q,   KC_W,          KC_E,    KC_R,     KC_T,      KC_BSLASH,
         CTL_T(KC_TAB), KC_A,   KC_S,          KC_D,    KC_F,     KC_G,
-        KC_LSPO,       KC_Z,   KC_X,          KC_C,    KC_V,     KC_B,      KC_GRAVE,
+        KC_LSFT,       KC_Z,   KC_X,          KC_C,    KC_V,     KC_B,      KC_GRAVE,
         KC_LCTL,       KC_NO,  LALT(KC_LGUI), KC_LALT, KC_SYSTEM_WAKE,
                                                                     LGUI(KC_COMMA), KC_F7,
                                                                              KC_NO,
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TD(TD_BUILD_TEST), KC_6,   KC_7,      KC_8,     KC_9,    KC_0,      KC_MINUS,
         KC_NO,             KC_Y,   KC_U,      KC_I,     KC_O,    KC_P,      KC_BSLASH,
                            KC_H,   KC_J,      KC_K,     KC_L,    KC_SCOLON, CTL_T(KC_QUOTE),
-        ALL_T(KC_NO),      KC_N,   KC_M,      KC_COMMA, KC_DOT,  KC_SLASH,  KC_RSPC,
+        ALL_T(KC_NO),      KC_N,   KC_M,      KC_COMMA, KC_DOT,  KC_SLASH,  KC_RSFT,
                                    KC_NO,     KC_NO,    KC_NO,   KC_NO,     KC_WAKE,
         KC_MEDIA_PLAY_PAUSE,  KC_MEDIA_NEXT_TRACK,
         KC_NO,
@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * | RESET  |  ⛔️  |  ⛔️  |  ⛔️  |  ⛔️  |  ⛔️  |      |           |  ⛔️  |  ⛔️  |  ⛔️  |  ⛔️  |  ⛔️  |  ⛔️  |   ⛔️   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |  ⛔️  |  ⛔️  |  ⛔️  |  ⛔️  |  ⛔️  |  ⛔️  |           |  ⛔️  |  -   |   =  |  `   |  +   |  ⛔️  |   ⛔️   |
+ * |        |  ⛔️  |  ⛔️  |  (   |   )  |  ⛔️  |  ⛔️  |           |  ⛔️  |  -   |   =  |  `   |  +   |  ⛔️  |   ⛔️   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |  {   |   }  |  [   |   ]  |   *  |------|           |------| Left | Down |  Up  | Right|   -  |   ⛔️   |
  * |--------+------+------+------+------+------|  ⛔️  |           |  ⛔️  |------+------+------+------+------+--------|
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYMB] = KEYMAP(
        // Left hand
        RESET,   KC_NO,    KC_NO,    KC_NO,       KC_NO,       KC_NO,     KC_TRNS,
-       KC_NO,   KC_NO,    KC_NO,    KC_NO,       KC_NO,       KC_NO,     KC_NO,
+       KC_NO,   KC_NO,    KC_LPRN,  KC_RPRN,       KC_NO,       KC_NO,     KC_NO,
        KC_TRNS, KC_LCBR,  KC_RCBR,  KC_LBRACKET, KC_RBRACKET, KC_ASTR, KC_LSHIFT,
        KC_TRNS, KC_NO,    KC_NO,    KC_NO,       KC_NO,       KC_NO,
        KC_TRNS, KC_NO,    KC_NO,    KC_NO,       KC_NO,
