@@ -23,9 +23,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
 };
 
-
 // Main Keymaps
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer.
  *
@@ -75,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,             KC_Y,       KC_U,        KC_I,       KC_O,    KC_P,      KC_BSLASH,
                            KC_H,       KC_J,        KC_K,       KC_L,    KC_SCOLON, CTL_T(KC_QUOTE),
         ALL_T(KC_NO),      KC_N,       KC_M,        KC_COMMA,   KC_DOT,  KC_SLASH,  KC_RSFT,
-                           LGUI(KC_B),  LGUI(KC_R), LGUI(KC_U), KC_NO,   KC_WAKE,
+                           LGUI(KC_B),  LGUI(KC_R), LGUI(KC_U), M(0),   KC_WAKE,
         KC_MEDIA_PLAY_PAUSE,  KC_MEDIA_NEXT_TRACK,
         KC_NO,
         MO(SYMB),KC_ENTER,KC_SPACE
@@ -125,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_NO,   KC_NO,    KC_NO,    KC_NO,       KC_NO,
        KC_NO,   KC_NO,
        KC_NO,   
-       KC_TRNS,KC_LGUI,KC_TRNS
+       KC_TRNS,KC_TRNS,KC_TRNS
        
 ),
 
@@ -187,16 +185,15 @@ const uint16_t PROGMEM fn_actions[] = {
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
   // MACRODOWN only works in this function
-      switch(id) {
-        case 0:
-        if (record->event.pressed) {
-          register_code(KC_RSFT);
-        } else {
-          unregister_code(KC_RSFT);
-        }
-        break;
-      }
-    return MACRO_NONE;
+  switch(id) {
+    case 0:
+      if (record->event.pressed) {
+        //return MACRO( I(255), T(H), T(E), T(L), T(L), W(255), T(O), END  ); // this sends the string 'hello' when the macro executes
+        return MACRO( D(LSFT), T(DOT), T(SCLN), U(LSFT), T(3), END  ); // this sends the string 'hello' when the macro executes
+      }         
+      break;
+  }
+  return MACRO_NONE;
 };
 
 // Runs just one time when the keyboard initializes.
