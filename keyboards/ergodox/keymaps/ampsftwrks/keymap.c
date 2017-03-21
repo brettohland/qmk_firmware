@@ -13,13 +13,21 @@
 // https://github.com/qmk/qmk_firmware/wiki#tap-dance-a-single-key-can-do-3-5-or-100-different-things
 
 enum {
-  TD_BUILD_TEST = 0
+  TD_BUILD_TEST = 0,
+  TD_NEKO_FACE
+};
+
+enum {
+  MC_NEKO_FACE = 0,
+  MC_NEKO_FACE_SLACK,
+  MC_OSX_EMOJI_PICKER
 };
 // Tap Dance Definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
 
   // Tap once in Xcode to Build, twice to Test (⌘ + B -> ⌘ + U)
-  [TD_BUILD_TEST] = ACTION_TAP_DANCE_DOUBLE(LGUI(KC_B), LGUI(KC_U))
+  [TD_BUILD_TEST] = ACTION_TAP_DANCE_DOUBLE(LGUI(KC_B), LGUI(KC_U)),
+  [TD_NEKO_FACE] = ACTION_TAP_DANCE_DOUBLE(M(0), M(1))
 
 };
 
@@ -35,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * HYPR: All modifiers.
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |  ESC   |   1  |   2  |   3  |   4  |   5  |  TG1 |           | TDBT |   6  |   7  |   8  |   9  |   0  |   -    |
+ * |  ESC   |   1  |   2  |   3  |   4  |   5  |  TG1 |           | EMOJ |   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |  TAB   |   Q  |   W  |   E  |   R  |   T  |  \   |           |  ⛔️  |   Y  |   U  |   I  |   O  |   P  |   \    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -43,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|  `   |           | HYPR |------+------+------+------+------+--------|
  * |LShift( |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |RShift) |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |LCtrl |  ⛔️  | ⌥ +⌘ |  ⌥   |  ⌘   |                                       | ⌘ +B | ⌘ +R | ⌘ +U |  ⛔️  | Wake |
+ *   |LCtrl |  ⛔️  | ⌥ +⌘ |  ⌥   |  ⌘   |                                       | ⌘ +B | ⌘ +R | ⌘ +U | NEKO | Wake |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | ⌘ +, |  F7  |       | PLAY | NEXT |
@@ -98,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |  TG2 |  ⛔️  |       |  ⛔️  |  ⛔️  |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |  ⛔️  |       |  ⛔️  |      |      |
- *                                 |      |      |------|       |------|  ⌘   |      |
+ *                                 |      |      |------|       |------|      |      |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -186,11 +194,16 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
   // MACRODOWN only works in this function
   switch(id) {
-    case 0:
+    case MC_NEKO_FACE:
       if (record->event.pressed) {
-        //return MACRO( I(255), T(H), T(E), T(L), T(L), W(255), T(O), END  ); // this sends the string 'hello' when the macro executes
-        return MACRO( D(LSFT), T(DOT), T(SCLN), U(LSFT), T(3), END  ); // this sends the string 'hello' when the macro executes
+        return MACRO( D(LSFT), T(DOT), T(SCLN), U(LSFT), T(3), END  ); // this sends the string >:3
       }         
+      break;
+
+    case MC_NEKO_FACE_SLACK:
+      if (record->event.pressed) {
+        return MACRO( T(GRAVE), D(LSFT), T(DOT), T(SCLN), U(LSFT), T(3), T(GRAVE), END  ); // this sends the string `>:3`
+      }
       break;
   }
   return MACRO_NONE;
