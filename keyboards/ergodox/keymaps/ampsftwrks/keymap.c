@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        ,-------------.       ,-------------.
  *                                        | ⌘ +, |  F7  |       | PLAY | NEXT |
  *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      |  ⛔️  |       |  ⛔️  |        |      |
+ *                                 |      |      |  ⛔️  |       | PREV |        |      |
  *                                 |  ⌫   |  ⌘   |------|       |------|   ⏎    |  ⎵   |
  *                                 |      |      | MO1  |       | MO1  |        |      |
  *                                 `--------------------'       `----------------------'
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ALL_T(KC_NO),      KC_N,       KC_M,        KC_COMMA,   KC_DOT,  KC_SLASH,  KC_RSFT,
                            LGUI(KC_B),  LGUI(KC_R), LGUI(KC_U), M(0),   KC_WAKE,
         KC_MEDIA_PLAY_PAUSE,  KC_MEDIA_NEXT_TRACK,
-        KC_NO,
+        KC_MEDIA_PREV_TRACK,
         MO(SYMB),KC_ENTER,KC_SPACE
 ),
 
